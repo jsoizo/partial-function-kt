@@ -1,4 +1,4 @@
-package com.jsoizo.paritialfunction.extensions
+package com.jsoizo.paritialfunction
 
 import com.jsoizo.paritialfunction.pf
 import kotlin.test.Test

@@ -1,7 +1,6 @@
-package com.jsoizo.paritialfunction
+package com.jsoizo.paritialfunction.extensions
 
-import com.jsoizo.paritialfunction.extensions.collect
-import com.jsoizo.paritialfunction.extensions.collectFirst
+import com.jsoizo.paritialfunction.pf
 import kotlin.test.Test
 import kotlin.test.assertNull
 
