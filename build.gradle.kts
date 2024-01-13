@@ -1,8 +1,12 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.9.20"
     id("org.jetbrains.kotlinx.kover") version "0.7.5"
+    id("org.jetbrains.dokka") version "1.9.10"
     `java-library`
 }
+
+group = "com.jsoizo"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
