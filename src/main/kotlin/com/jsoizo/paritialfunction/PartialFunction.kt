@@ -19,6 +19,11 @@ interface PartialFunction<A, B> : (A) -> B? {
         override fun apply(a: A): C = other.apply(this@PartialFunction.apply(a))
     }
 
+    fun <C> andThen(other: (B) -> C): PartialFunction<A, C> = object : PartialFunction<A, C> {
+        override fun isDefinedAt(a: A): Boolean = this@PartialFunction.isDefinedAt(a)
+        override fun apply(a: A): C = other(this@PartialFunction.apply(a))
+    }
+
     fun <C> runWith(f: (B) -> C): (A) -> Boolean = { a ->
         if (isDefinedAt(a)) {
             f(apply(a))
