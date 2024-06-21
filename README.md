@@ -1,6 +1,6 @@
 # partial-function-kt
 
-## Overview
+![Maven Central Version](https://img.shields.io/maven-central/v/com.jsoizo/partial-function-kt)
 
 This library provides Scala's PartialFunction and a set of functions that take it as an argument in Kotlin.  
 Partial functions are those that might not provide an answer for every possible input, unlike total functions which offer a result for each input.
@@ -13,7 +13,15 @@ Partial functions are those that might not provide an answer for every possible 
 
 ### Installation
 
-// TODO: this will be write
+#### Gradle
+
+Add the dependency to your project:
+
+```kotlin
+dependencies {
+    implementation("com.jsoizo:partial-function-kt:0.1.1")
+}
+```
 
 ### Usage
 
@@ -34,8 +42,8 @@ val add100 = partialFunction<Int, Int>(
     { it + 100 }
 )
 
-val devide42AndAdd100 = devide42.andThen(add100)
-val devide42OrAdd100 = devide42.orElse(add100)
+val devide42AndAdd100 = devide42 andThen add100
+val devide42OrAdd100 = devide42 orElse add100
 ```
 
 To use the defined PartialFunction with Array, Result, or Nullable operations
