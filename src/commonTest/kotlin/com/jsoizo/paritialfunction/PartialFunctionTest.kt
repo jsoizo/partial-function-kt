@@ -37,7 +37,7 @@ class PartialFunctionTest {
         val pfPlusOne = pf<Int, Int>(
             { it > 0 }, { it + 1 }
         )
-        val pf = pfEvenSquare.andThen(pfPlusOne)
+        val pf = pfEvenSquare andThen pfPlusOne
 
         // When pfEvenSquare and pfPlusOne are applied
         val result1 = pf.invoke(2)
@@ -58,7 +58,7 @@ class PartialFunctionTest {
             { it % 2 == 0 }, { it * it }
         )
         val plusOne = { i: Int -> i + 1 }
-        val pf = pfEvenSquare.andThen(plusOne)
+        val pf = pfEvenSquare andThen plusOne
 
         // When pfEvenSquare and pfPlusOne are applied
         val result1 = pf.invoke(2)
@@ -78,7 +78,7 @@ class PartialFunctionTest {
             { it > 0 }, { it + 1 }
         )
 
-        val pf = pfEvenSquare.orElse(pfPlusOne)
+        val pf = pfEvenSquare orElse pfPlusOne
 
         // When pfEvenSquare applied
         val result1 = pf.invoke(2)
