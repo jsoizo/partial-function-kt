@@ -1,6 +1,5 @@
 package com.jsoizo.paritialfunction
 
-import com.jsoizo.paritialfunction.pf
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
@@ -16,7 +15,7 @@ class PartialFunctionTest {
 
         val result = pf.invoke("test")
 
-        assert(result == "foo")
+        assertTrue(result == "foo")
     }
 
     @Test
@@ -42,7 +41,7 @@ class PartialFunctionTest {
 
         // When pfEvenSquare and pfPlusOne are applied
         val result1 = pf.invoke(2)
-        assert(result1 == 5)
+        assertTrue(result1 == 5)
 
         // When pfEvenSquare not applied
         val result2 = pf.invoke(3)
@@ -63,7 +62,7 @@ class PartialFunctionTest {
 
         // When pfEvenSquare and pfPlusOne are applied
         val result1 = pf.invoke(2)
-        assert(result1 == 5)
+        assertTrue(result1 == 5)
 
         // When pfEvenSquare not applied
         val result2 = pf.invoke(3)
@@ -83,11 +82,11 @@ class PartialFunctionTest {
 
         // When pfEvenSquare applied
         val result1 = pf.invoke(2)
-        assert(result1 == 4)
+        assertTrue(result1 == 4)
 
         // When pfEvenSquare not applied but pfPlusOne applied
         val result2 = pf.invoke(1)
-        assert(result2 == 2)
+        assertTrue(result2 == 2)
 
         // When pfEvenSquare and pfPlusOne not applied
         val result3 = pf.invoke(-3)
@@ -107,7 +106,7 @@ class PartialFunctionTest {
 
         val result1 = pf.runWith(pushMessage)(2)
         assertTrue(result1)
-        assert(messages[4] == "Value: 4")
+        assertTrue(messages[4] == "Value: 4")
 
         val result2 = pf.runWith(pushMessage)(1)
         assertFalse(result2)

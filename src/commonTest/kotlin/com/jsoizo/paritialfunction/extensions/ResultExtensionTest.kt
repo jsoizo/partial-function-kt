@@ -2,6 +2,8 @@ package com.jsoizo.paritialfunction.extensions
 
 import com.jsoizo.paritialfunction.pf
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class ResultExtensionTest {
 
@@ -13,7 +15,7 @@ class ResultExtensionTest {
 
         val result = rValue.collect(evenSquarePf)
 
-        assert(result == Result.success(100))
+        assertEquals(result, Result.success(100))
     }
 
     @Test
@@ -22,7 +24,7 @@ class ResultExtensionTest {
 
         val result = rValue.collect(evenSquarePf)
 
-        assert(result == rValue)
+        assertEquals(result, rValue)
     }
 
     @Test
@@ -31,7 +33,7 @@ class ResultExtensionTest {
 
         val result = rValue.collect(evenSquarePf)
 
-        assert(result.exceptionOrNull() is NoSuchElementException)
+        assertTrue(result.exceptionOrNull() is NoSuchElementException)
     }
 
     val recoverPf = pf<Throwable, Int>({ it is Exception }, { 100 })
@@ -42,7 +44,7 @@ class ResultExtensionTest {
 
         val result = rValue.recover(recoverPf)
 
-        assert(result == Result.success(100))
+        assertEquals(result, Result.success(100))
     }
 
     @Test
@@ -51,7 +53,7 @@ class ResultExtensionTest {
 
         val result = rValue.recover(recoverPf)
 
-        assert(result == Result.success(10))
+        assertEquals(result, Result.success(10))
     }
 
     @Test
@@ -60,7 +62,7 @@ class ResultExtensionTest {
 
         val result = rValue.recover(recoverPf)
 
-        assert(result == rValue)
+        assertEquals(result, rValue)
     }
 
     val recoverWithPf = pf<Throwable, Result<Int>>({ it is Exception }, { Result.success( 100) })
@@ -71,7 +73,7 @@ class ResultExtensionTest {
 
         val result = rValue.recoverWith(recoverWithPf)
 
-        assert(result == Result.success(100))
+        assertEquals(result, Result.success(100))
     }
 
     @Test
@@ -80,7 +82,7 @@ class ResultExtensionTest {
 
         val result = rValue.recoverWith(recoverWithPf)
 
-        assert(result == rValue)
+        assertEquals(result, rValue)
     }
 
     @Test
@@ -89,6 +91,6 @@ class ResultExtensionTest {
 
         val result = rValue.recoverWith(recoverWithPf)
 
-        assert(result == rValue)
+        assertEquals(result, rValue)
     }
 }

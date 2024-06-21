@@ -1,30 +1,63 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.9.20"
+    val kotlinVersion = "1.9.20"
+    kotlin("multiplatform") version kotlinVersion
     id("org.jetbrains.kotlinx.kover") version "0.7.5"
     id("org.jetbrains.dokka") version "1.9.10"
-    `java-library`
+    id("com.android.library") version "8.2.0"
+    `maven-publish`
 }
 
 group = "com.jsoizo"
-version = "0.0.1"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
+    google()
 }
 
-dependencies {
-}
+kotlin {
+    applyDefaultHierarchyTemplate()
+    jvm {
+        withSourcesJar()
+    }
 
-testing {
-    suites {
-        val test by getting(JvmTestSuite::class) {
-            useKotlinTest("1.9.20")
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                // common dependencies
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
         }
     }
+
+    androidTarget {
+        publishLibraryVariants("release")
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+    }
+    iosArm64()
+    iosSimulatorArm64()
+    linuxX64()
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
 
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
     }
+}
+
+android {
+    namespace = "com.jsoizo.paritialfunction"
+    compileSdk = 35
 }

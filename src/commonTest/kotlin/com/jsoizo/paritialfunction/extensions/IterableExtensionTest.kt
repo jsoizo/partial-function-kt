@@ -2,7 +2,9 @@ package com.jsoizo.paritialfunction.extensions
 
 import com.jsoizo.paritialfunction.pf
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class IterableExtensionTest {
 
@@ -14,7 +16,7 @@ class IterableExtensionTest {
 
         val result = list.collect(evenSquarePf)
 
-        assert(result == listOf(4, 16))
+        assertEquals(result, listOf(4, 16))
     }
 
     @Test
@@ -23,7 +25,7 @@ class IterableExtensionTest {
 
         val result = list.collectFirst(evenSquarePf)
 
-        assert(result == 16)
+        assertTrue(result == 16)
     }
 
     @Test

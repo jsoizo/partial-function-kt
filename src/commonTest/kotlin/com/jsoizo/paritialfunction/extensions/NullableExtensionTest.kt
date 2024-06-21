@@ -4,6 +4,7 @@ package com.jsoizo.paritialfunction.extensions
 import com.jsoizo.paritialfunction.pf
 import kotlin.test.Test
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class NullableExtensionTest {
 
@@ -15,7 +16,7 @@ class NullableExtensionTest {
 
         val result = nullableValue.collect(evenSquarePf)
 
-        assert(result == 100)
+        assertTrue(result == 100)
     }
 
     @Test
